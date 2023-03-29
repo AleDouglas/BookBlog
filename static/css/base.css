@@ -1,0 +1,33 @@
+
+
+.intro h1{
+    color: green;
+    text-align: -webkit-center;
+    font-size: 74px
+  }
+  
+  .sub-intro{
+    text-align: -webkit-center;
+    font-size: 15px;
+  }
+  
+  .about{
+    margin-top: 10%;
+    text-align: -webkit-center;
+  }
+  
+  .card_icon img{
+    padding: 15px;
+    height: 90px;
+    width: auto;
+  }
+  
+  .card_janela{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .card_info{
+    font-family: 'Abel', sans-serif;
+    align-self: center;
+  }

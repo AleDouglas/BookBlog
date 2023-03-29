@@ -6,15 +6,30 @@
 
 {% block title %}Home{% endblock title %}
 {% block content %}
-<h1>Homepage</h1>
-
-
-{% if user.is_authenticated %}
-	Hi {{ user.email }}!
-	<p><a href="{% url 'account_logout' %}">Log Out</a></p>
-{% else %}
-	<p>You are not logged in</p>
-	<a href="{% url 'account_login' %}">Log In</a>
-	<a href="{% url 'account_signup' %}">Sign Up</a>
-{% endif %}
+<div class="intro">
+	<h1>Seja Bem-Vindo!</h1>
+	<div class="sub-intro">
+	<p>Aqui você encontrará diversos livros, podendo você mesmo adicionar suas leituras e opiniões próprias sobre cada livro publicado.</p>
+	<p>Se ficou interessado experimente criar sua conta agora!</p>
+	</div>
+</div>
+  
+<hr>
+<div class="about">
+	<h1>SOBRE O NOSSO PROJETO</h1>
+	<div class="about_card">
+		<div class="card_janela">
+			<div class="card_icon"><img src="https://www.svgrepo.com/show/499864/book.svg"></div>
+			<div class="card_info">Faça uma biblioteca própria dos livros que você está lendo ou que já concluiu, adicionando você mesmo informações, anotações e muito mais do jeito que VOCÊ preferir!</div>
+		</div>
+		<div class="card_janela">
+			<div class="card_icon"><img src="https://www.svgrepo.com/show/499870/order.svg"></div>
+			<div class="card_info">Suas opiniões, comentários também podem ficar de maneira pessoal, onde só você possa ver, garantindo também uma privacidade para fazer o comentário que desejar.</div>
+		</div>
+		<div class="card_janela">
+			<div class="card_icon"><img src="https://www.svgrepo.com/show/255139/orders-order.svg"></div>
+			<div class="card_info">Temos um sistema que permite a interação de diversos usuários, podendo comentar e até mesmo trocar informações sobre os livros adicionados.</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}
