@@ -1,0 +1,23 @@
+version: '19.03.0'
+services:
+  web:
+    build: .
+    command: python3 /code/manage.py runserver 0.0.0.0:8000
+    environment:
+    - SECRET_KEY=django-insecure-^3cuzn8zb-)#31+v@d1n916k)&o%*wvfiefqk$ef1fr2r&w74f
+    - DEBUG=1
+    volumes:
+    - .:/code
+    ports:
+    - 8000:8000
+    depends_on:
+    - db
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+    - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
