@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+
+# django-debug-toolbar # new
+import socket
+hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,13 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', # new
+    'django.contrib.sites', 
 
     # Third-party
-    'crispy_forms', # new
-    'crispy_bootstrap5', # new
-    'allauth', # new
-    'allauth.account', # new
+    'crispy_forms', 
+    'crispy_bootstrap5', 
+    'allauth', 
+    'allauth.account',
+    'debug_toolbar', # new
+    
 
     # local
     'users.apps.UsersConfig',
@@ -51,27 +59,28 @@ INSTALLED_APPS = [
 ]
 
 # crispy-template
-CRISPY_TEMPLATE_PACK = 'bootstrap5' # new
+CRISPY_TEMPLATE_PACK = 'bootstrap5' 
 
 
 # django-allauth config
-AUTH_USER_MODEL = 'users.CustomUser' # new
-LOGIN_REDIRECT_URL = 'home' # new
-LOGOUT_REDIRECT_URL = 'home' # new
+AUTH_USER_MODEL = 'users.CustomUser' 
+LOGIN_REDIRECT_URL = 'home' 
+LOGOUT_REDIRECT_URL = 'home' 
 
 
-SITE_ID = 1 # new
-AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend','allauth.account.auth_backends.AuthenticationBackend',) # new
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new
+SITE_ID = 1 
+AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend','allauth.account.auth_backends.AuthenticationBackend',) 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' 
 
-ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False # new
-ACCOUNT_USERNAME_REQUIRED = False # new
-ACCOUNT_AUTHENTICATION_METHOD = 'email' # new
-ACCOUNT_EMAIL_REQUIRED = True # new
-ACCOUNT_UNIQUE_EMAIL = True # new
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False 
+ACCOUNT_USERNAME_REQUIRED = False 
+ACCOUNT_AUTHENTICATION_METHOD = 'email' 
+ACCOUNT_EMAIL_REQUIRED = True 
+ACCOUNT_UNIQUE_EMAIL = True 
 
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -79,7 +88,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware', # new
+    'django.middleware.cache.FetchFromCacheMiddleware', # new
 ]
+
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 604800
+CACHE_MIDDLEWARE_KEY_PREFIX = ''
+
 
 ROOT_URLCONF = 'bkstore.urls'
 
@@ -159,15 +175,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] # new
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # new
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),] 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
 STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-] # new
+] 
 
-MEDIA_URL = '/media/' # new
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # new
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 
 
 # Default primary key field type
