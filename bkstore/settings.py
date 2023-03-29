@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 
-# django-debug-toolbar # new
+# django-debug-toolbar 
 import socket
 hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
 INTERNAL_IPS = [ip[:-1] + "1" for ip in ips]
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5', 
     'allauth', 
     'allauth.account',
-    'debug_toolbar', # new
+    'debug_toolbar', 
     
 
     # local
@@ -80,7 +80,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 
 
 MIDDLEWARE = [
-    'django.middleware.cache.UpdateCacheMiddleware', # new
+    'django.middleware.cache.UpdateCacheMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -88,8 +88,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware', # new
-    'django.middleware.cache.FetchFromCacheMiddleware', # new
+    'debug_toolbar.middleware.DebugToolbarMiddleware', 
+    'django.middleware.cache.FetchFromCacheMiddleware', 
 ]
 
 CACHE_MIDDLEWARE_ALIAS = 'default'
