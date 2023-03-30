@@ -9,6 +9,7 @@
 <p>Autor: {{ book.author }}</p>
 <div>
     <h3>Comentários</h3>
+    <a href="{{ book.get_absolute_url }}/addcomment/">Adicionar comentário...</a>
     <ul>
     {% for review in book.reviews.all %}
         <li>{{ review.review }} ({{ review.author }})</li>
