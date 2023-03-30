@@ -6,7 +6,7 @@ import uuid
 class Book(models.Model): 
     id = models.UUIDField(primary_key=True,db_index=True,default=uuid.uuid4,editable=False) 
     title = models.CharField(max_length=200)
-    author = models.CharField(max_length=200)
+    author = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
     cover = models.ImageField(upload_to='covers/', blank=True)
     texto = models.TextField(blank=True)
     class Meta:

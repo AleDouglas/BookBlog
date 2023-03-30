@@ -35,8 +35,13 @@ class NewBookAdd(LoginRequiredMixin, CreateView):
     login_url = 'account_login'
     model = Book
     template_name = 'books/book_add.html'
-    fields = ['title','author', 'texto', 'cover']
+    fields = ['title', 'texto', 'cover']
+    success_url = reverse_lazy('book_list')
 
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.author = user
+        return super(NewBookAdd, self).form_valid(form)
 
 # Objetivo: permitir que o usuário adicione comentários a postagens específicas
 class NewComment(LoginRequiredMixin, CreateView):
