@@ -19,6 +19,10 @@ class BookDetailView(LoginRequiredMixin, DetailView):
     template_name = 'books/book_detail.html'
     login_url = 'account_login'
 
+    def get_context_data(self,*args, **kwargs):
+        context = super(BookDetailView, self).get_context_data(*args,**kwargs)
+        context['user_name'] = self.request.user
+        return context
 
 # Objetivo: realizar pesquisas e exibir resultados
 class SearchResultsListView(ListView): 
@@ -47,7 +51,7 @@ class NewBookAdd(LoginRequiredMixin, CreateView):
 class NewComment(LoginRequiredMixin, CreateView):
     login_url = 'account_login'
     model = Review
-    template_name = 'books/book_add_comment.html'
+    template_name = 'books/book_comment.html'
     fields = ['review']
 
     def form_valid(self, form):
@@ -59,3 +63,17 @@ class NewComment(LoginRequiredMixin, CreateView):
     def get_success_url(self):
           book_id=self.kwargs['pk']
           return reverse_lazy('book_detail', kwargs={'pk': book_id})
+
+# Objetivo: permitir que o usuário edite comentários a postagens específicas
+class EditComment(LoginRequiredMixin, UpdateView):
+    login_url = 'account_login'
+    model = Review
+    template_name = 'books/book_comment.html'
+    fields = ['review']
+
+    def get_success_url(self):
+          book_id=self.kwargs['id_dados']
+          return reverse_lazy('book_detail', kwargs={'pk': book_id})
+
+class DeleteComment(LoginRequiredMixin, DeleteView):
+    pass

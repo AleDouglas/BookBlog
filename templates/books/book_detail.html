@@ -1,4 +1,6 @@
 {% extends '_base.html' %}
+{% load static %}
+
 {% block title %}{{ book.title }}{% endblock title %}
 {% block content %}
 <div class="book-detail">
@@ -13,6 +15,9 @@
     <ul>
     {% for review in book.reviews.all %}
         <li>{{ review.review }} ({{ review.author }})</li>
+        {% if review.author == user_name %}
+        <p> <a href="{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
+        {% endif %}
     {% endfor %}
     </ul>
 </div>
