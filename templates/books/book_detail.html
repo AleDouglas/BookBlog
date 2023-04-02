@@ -16,7 +16,7 @@
     {% for review in book.reviews.all %}
         <li>{{ review.review }} ({{ review.author }})</li>
         {% if review.author == user_name %}
-        <p> <a href="{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
+        <p> <a href="{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a href="{{ book.get_absolute_url }}/{{ review.pk }}/deletecomment"> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
         {% endif %}
     {% endfor %}
     </ul>

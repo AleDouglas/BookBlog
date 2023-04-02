@@ -76,4 +76,10 @@ class EditComment(LoginRequiredMixin, UpdateView):
           return reverse_lazy('book_detail', kwargs={'pk': book_id})
 
 class DeleteComment(LoginRequiredMixin, DeleteView):
-    pass
+    login_url = 'account_login'
+    model = Review
+    template_name = 'books/delete_comment.html'
+
+    def get_success_url(self):
+          book_id=self.kwargs['id_dados']
+          return reverse_lazy('book_detail', kwargs={'pk': book_id})

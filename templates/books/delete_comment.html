@@ -1,0 +1,14 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Comentário{% endblock title %}
+{% block content %}
+
+<p>Certeza que deseja deletar o comentário? </p>
+<form method="post">
+	{% csrf_token %}
+	{{ form|crispy }}
+	<button class="btn btn-danger" type="submit">DELETAR</button>
+</form>
+
+{% endblock content %}
