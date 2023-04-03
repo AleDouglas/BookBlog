@@ -6,8 +6,9 @@ Projeto -> Fazer um fórum relacionado a livros. Basicamente o intuito do projet
 
 Versão | Atualização | Data
 :--------- | :------: | -------:
+1.1.1| Adicionado CustomUser e informações como: **Biografia, Imagem para Avatar, Data de aniversário** | 03/04/2023
 1.1v | A view do fórum estava localizado no APP books, por se tratar de uma página dei preferência em mandar ele para o APP Pages, acredito que seja mais condizente com o intuito das aplicações. Essa modificação só foi possível graças a **POO** | 03/04/2023
-1.0v | Projeto Base finalizado | 03/04/2024
+1.0v | Projeto Base finalizado | 03/04/2023
 
 
 ##### Projeto Base
