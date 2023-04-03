@@ -41,7 +41,7 @@ class NewBookAdd(LoginRequiredMixin, CreateView):
     login_url = 'account_login'
     model = Book
     template_name = 'books/book_add.html'
-    fields = ['title', 'texto', 'cover']
+    fields = ['title', 'category','texto', 'cover']
     success_url = reverse_lazy('book_list')
 
     def form_valid(self, form):
