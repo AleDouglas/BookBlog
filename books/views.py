@@ -77,6 +77,7 @@ class EditComment(LoginRequiredMixin, UpdateView):
           book_id=self.kwargs['id_dados']
           return reverse_lazy('book_detail', kwargs={'pk': book_id})
 
+# Objetivo: permitir que o usuário delete comentários específicos
 class DeleteComment(LoginRequiredMixin, DeleteView):
     login_url = 'account_login'
     model = Review
@@ -86,13 +87,3 @@ class DeleteComment(LoginRequiredMixin, DeleteView):
           book_id=self.kwargs['id_dados']
           return reverse_lazy('book_detail', kwargs={'pk': book_id})
 
-
-#Views relacionadas ao fórum
-class ForumView(ListView):
-    model = Category
-    template_name = 'books/forum_book.html'
-
-    def get_context_data(self,*args, **kwargs):
-        context = super(ForumView, self).get_context_data(*args,**kwargs)
-        context['category'] = Category.objects.order_by('title')
-        return context
