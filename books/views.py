@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
-from .models import Book, Review
+from .models import Book, Review, Category
 
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Q
@@ -32,7 +32,9 @@ class SearchResultsListView(ListView):
 
     def get_queryset(self): 
         query = self.request.GET.get('q')
-        return Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
+        return Book.objects.filter(
+            Q(title__icontains=query)|Q(texto__icontains=query)
+        )
 
 # Objetivo: permitir que o usuário adicionar livros novos
 class NewBookAdd(LoginRequiredMixin, CreateView):
@@ -83,3 +85,14 @@ class DeleteComment(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
           book_id=self.kwargs['id_dados']
           return reverse_lazy('book_detail', kwargs={'pk': book_id})
+
+
+#Views relacionadas ao fórum
+class ForumView(ListView):
+    model = Category
+    template_name = 'books/forum_book.html'
+
+    def get_context_data(self,*args, **kwargs):
+        context = super(ForumView, self).get_context_data(*args,**kwargs)
+        context['category'] = Category.objects.order_by('title')
+        return context

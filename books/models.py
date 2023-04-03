@@ -3,12 +3,30 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 import uuid
 
+
+
+
+class Category(models.Model):
+    id = models.UUIDField(primary_key=True,db_index=True,default=uuid.uuid4,editable=False)
+    title = models.CharField('Título',max_length=200)
+    description = models.CharField('Descrição',max_length=400, blank=True)
+
+    class Meta:
+        indexes = [models.Index(fields=['id'], name='id_category')]
+
+    def __str__(self):
+        return self.title
+
+
 class Book(models.Model): 
     id = models.UUIDField(primary_key=True,db_index=True,default=uuid.uuid4,editable=False) 
+    created = models.DateField('Data de criação', auto_now_add=True)
+    category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name='categoria')
     title = models.CharField(max_length=200)
     author = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
-    cover = models.ImageField(upload_to='covers/', blank=True)
+    cover = models.ImageField('Imagem do livro',upload_to='covers/', blank=True)
     texto = models.TextField(blank=True)
+
     class Meta:
         indexes = [models.Index(fields=['id'], name='id_index')]
 
@@ -18,10 +36,13 @@ class Book(models.Model):
     def get_absolute_url(self): 
         return reverse('book_detail', args=[str(self.id)])
 
+
 class Review(models.Model): 
     book = models.ForeignKey(Book,on_delete=models.CASCADE,related_name='reviews')
-    review = models.CharField(max_length=800)
+    review = models.TextField('Comentário')
     author = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
 
     def __str__(self):
         return self.review
+        
+

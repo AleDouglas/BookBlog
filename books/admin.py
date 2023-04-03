@@ -1,6 +1,15 @@
 from django.contrib import admin
-from .models import Book, Review
+from .models import Book, Review, Category
 
+
+class BookInLine(admin.TabularInline):
+    model = Book
+
+class CategoryAdmin(admin.ModelAdmin):
+    inlines = [BookInLine]
+    list_display = ("title", )
+
+admin.site.register(Category, CategoryAdmin)
 
 
 class ReviewInline(admin.TabularInline): 
@@ -8,7 +17,10 @@ class ReviewInline(admin.TabularInline):
 
 class BookAdmin(admin.ModelAdmin): 
     inlines = [ReviewInline]
-    list_display = ("title", "author",)
+    
+    list_display = ("title", "category","author",)
 
 
 admin.site.register(Book, BookAdmin)
+
+

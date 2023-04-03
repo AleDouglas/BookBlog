@@ -2,3 +2,21 @@
 {% load static %}
 
 {% block title %}Fórum Book{% endblock title %}
+{% block content %}
+
+
+<div class="forum">
+    {% for x in category %}
+    <div class="categoria">
+      <div class="categoria_title"><p>{{ x.title }}</p></div>
+        {% for book in x.categoria.all %}
+            <div class="topicos">
+                <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></p>
+                <p>Autor do tópico: {{ book.author }} - Criado em: {{ book.created }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
