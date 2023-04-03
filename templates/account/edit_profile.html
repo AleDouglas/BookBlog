@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Profile Edit{% endblock title %}
+{% block content %}
+
+{% if user.pk == user_pk %}
+<h2>Editar Perfil de Usuário</h2>
+<form method="post">
+	{% csrf_token %}
+	{{ form|crispy }}
+	<button class="btn btn-success" type="submit">Confirmar</button>
+</form>
+{% else %}
+<div class="alert alert-danger" role="alert">
+	<h1>ACESSO PROÍBIDO, VERIFIQUE A PÁGINA QUE ESTÁ ACESSANDO</h1>
+	<hr>
+	<h3>A CONTÍNUA TENTATIVA DE ACESSAR ESSA PÁGINA PODE RESULTAR NO BANIMENTO DA SUA CONTA</h1>
+</div>
+{% endif %}
+
+
+{% endblock content %}

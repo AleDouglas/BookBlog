@@ -11,10 +11,7 @@ Versão | Atualização | Data
 1.0 | Projeto Base finalizado | 03/04/2023
 
 
-##### Projeto Base
+#### Projeto Base
 Chamei de projeto base por possuir o intuito do que era o projeto inicial: *criação de um Fórum separado em categorias e listando todas as postagens*. A partir de agora as demais atualizações ( 1.0 em diante ) será a respeito de melhorias , tanto no back-end quanto no front-end (com ênfase no Back-End), além de novos recursos que serão adicionados.
 
 ###### Banco de Imagens do Projeto ( Print da tela/funcionamento do site ):
-
-Link | Data que foi adicionada a imagem
-... | ...

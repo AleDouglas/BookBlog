@@ -19,6 +19,7 @@
           {% if user.is_authenticated %}
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Minha Conta</a>
+            <a class="dropdown-item" href="{% url 'profile_edit' user.pk %}">Editar Profile</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a>
           </div>
