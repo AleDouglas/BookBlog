@@ -1,31 +1,37 @@
 {% extends '_base.html' %}
 {% load blog_extras %}
+
 {% load static %}
 
 {% block title %}Profile Page{% endblock title %}
 
 {% block content %}
 
-<div class="profileBase">
-    <div class="profileAvatar">
-        {% if user.perfilIMG %}
-            <img class="perfilIMG" src="{{ user.perfilIMG.url }}" alt="{{ user.username }}">
-        {% else %}
-            <img class="perfilIMG" src="{% static 'images/usersIMG/avatar-default.svg' %}" alt="{{ user.username }}">
-        {% endif %}
-    </div>
-    <hr>
-    <div class="profileDados">
-        <p class="badgesTAG"><img class="badges" src="{% static 'badges/admin.svg' %} ">ADMINISTRADOR</p>
-        <hr style="height: 2px;">
-        <p>Usuário: {{ user.username }}</p>
-        <p>Nome: {{ user.first_name }} {{ user.last_name }}</p>
-        <hr>
-        <p class="bio">BIOGRAFIA:</p>
-        <p>{{ user.bio|convert_markdown|safe }}</p>
-    </div>
 
-</div>
+
+    <div class="perfil">
+
+        <div class="perfilIMG">
+            {% if user.perfilIMG %}
+            <img class="perfilIMG" src="{{ user.perfilIMG.url }}" alt="{{ user.username }}">
+            {% else %}
+            <img class="perfilIMG" src="{% static 'images/usersIMG/avatar-default.svg' %}" alt="{{ user.username }}">
+            {% endif %}
+        </div>
+        <div class="perfilDADOS">
+            <p> <a href="{% url 'profile_edit' user.pk %}"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar perfil</a>
+            <p>Usuário: {{ user.username }}</p>
+            {% if user.is_staff %}
+            <p class="badgesTAG"><img class="badges" src="{% static 'badges/admin.svg' %} ">ADMINISTRADOR</p>
+            {% endif %}
+            <p>Conta criada em: {{ user.date_joined }}</p>
+            <p>Data de nascimento: {{ user.birth_date }}</p>
+            <h3>BIOGRAFIA:</h3>
+            <p>{{ user.bio|convert_markdown|safe }}</p>
+        </div>
+
+
+    </div>
 
 
 

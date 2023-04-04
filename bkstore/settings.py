@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'allauth', 
     'allauth.account',
     'debug_toolbar', 
+    #'channels', # new
+    #'django_live_templates', # new
     
 
     # local
@@ -97,7 +99,7 @@ MIDDLEWARE = [
 ]
 
 CACHE_MIDDLEWARE_ALIAS = 'default'
-CACHE_MIDDLEWARE_SECONDS = 604800
+CACHE_MIDDLEWARE_SECONDS = 0
 CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
 

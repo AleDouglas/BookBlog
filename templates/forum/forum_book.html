@@ -9,15 +9,16 @@
 </div>
 
 
-<div class="forum">
+<div class="forumBase">
     {% for x in category %}
-    <div class="categoria">
-      <div class="categoria_title alert alert-success"><p>{{ x.title }}</p></div>
+    <div class="categoriaForum">
+        <h2>{{ x.title }}</h2>
         {% for book in x.categoria.all %}
-            <div class="topicos">
+        <div class="topicoForum">
                 <p><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></p>
                 <p>Autor do tópico: {{ book.author }} - Criado em: {{ book.created }}</p>
             </div>
+            <hr>
         {% endfor %}
     </div>
     {% endfor %}

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.intro{
+    margin-top:100px;
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.top-intro h1{
+    font-size: 3em;
+    text-align: center;
+    font-family: 'Righteous', cursive;
+
+}
+
+.sub-intro p{
+    font-size: 1.5em;
+    text-align: center;
+    margin: 15px 0px 15px 0px;
+}
+.sub-intro p a{
+    text-decoration: none;
+    font-size: 0.8em;
+    text-align: center;
+    margin: 15px 0px 15px 0px;
+    padding: 10px;
+    transition: .5s;
+}
+.sub-intro p a:hover{
+    padding: 10px;
+    background-color: #fff;
+    color: black;
+    border-radius: 5px;
+}
+
+.sobre{
+    margin-top: 5%;
+}
+
+.top-sobre{
+    font-size: 1.5em;
+    text-align: center;
+    font-family: 'Righteous', cursive;
+}
+
+
+  
+.card_icon img{
+padding: 15px;
+height: 90px;
+width: auto;
+}
+
+.card_janela{
+display: flex;
+justify-content: center;
+}
+
+.card_info{
+font-family: 'Abel', sans-serif;
+align-self: center;
+}

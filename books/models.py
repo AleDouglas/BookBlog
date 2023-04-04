@@ -24,7 +24,6 @@ class Book(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name='categoria')
     title = models.CharField('Título',max_length=200)
     author = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
-    cover = models.ImageField('Imagem do livro',upload_to='covers/', blank=True)
     texto = models.TextField('Texto',blank=True)
 
     class Meta:

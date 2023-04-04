@@ -1,0 +1,18 @@
+.perfil{
+    display: flex;
+    align-items: center;
+}
+
+.perfil *{
+    letter-spacing: 1.5px;
+}
+
+
+.perfilDADOS{
+    margin-left: 5%;
+}
+
+.mini-icon{
+    max-height: 20px;
+    width: auto;
+}

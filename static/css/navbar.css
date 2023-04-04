@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&display=swap');
+
+header{
+    background-color: black;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    z-index: 99;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+
+}
+
+header a{
+    text-decoration: none;
+}
+
+.menuLogo{
+    font-size: 2em;
+    color: #fff;
+    user-select: none;
+}
+
+.menuPrincipal a{
+    position: relative;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+
+}
+
+.menuPrincipal a::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: -6px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.menuPrincipal a:hover::after{
+    transform: scaleX(1);
+}
+.menuPrincipal .btnLogin{
+    color: white;
+    width: 130px;
+    height: 50px;
+    background-color: transparent;
+    border: 2px solid #Fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    columns: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+
+}
+
+.menuPrincipal .btnLogin:hover{
+    background: #fff;
+    color: #162938;
+}
+
+.btnLogin.Logout:hover{
+    background: #c50c0c;
+    color: #162938;
+
+}

@@ -1,25 +1,29 @@
-.categoria{
-  margin: 25px;
-  margin-bottom: 50px;
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.forumBase{
+    border: 2px solid black;
+    padding: 5%;
 }
 
-.categoria_title p{
-  font-size: 23px;
-  font-family: 'Abel', sans-serif;
-  margin-left: 5px;
-}
-.topicos{
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 2px solid black;
+.categoriaForum h2{
+    font-size: 2em;
+    padding: 10px;
+    background-color: #00c5ff;
+    border-radius: 9px;
+    font-family: 'Righteous', cursive;
+    letter-spacing: 2px;
 }
 
-.topicoPrincipal{
-  font-family: 'Abel', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.topicoForum{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 9px;
 }
-.topicoTopo{
-text-align-last: center;
+
+.topicoForum p{
+    padding: 5px;
+    font-size: 1.1em;
+    letter-spacing: 1.5px;
 }

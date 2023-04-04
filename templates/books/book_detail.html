@@ -18,15 +18,28 @@
 </div>
 <!-- COMENTÁRIOS -->
 <div>
-    <h3>Comentários</h3>
+    <h3 style="margin-top: 20px;">Comentários</h3>
     <a href="{{ book.get_absolute_url }}/addcomment/">Adicionar comentário...</a>
-    <ul>
     {% for review in book.reviews.all %}
-        <li>{{ review.review }} ({{ review.author }})</li>
-        {% if review.author == user_name %}
-        <p> <a href="{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a href="{{ book.get_absolute_url }}/{{ review.pk }}/deletecomment"> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
-        {% endif %}
+    <div class="comentario">
+        <div class="comentarioUSER">
+            {% if review.author.perfilIMG %}
+            <img class="perfilIMG" src="{{ review.author.perfilIMG.url }}" alt="">
+            {% else %}
+            <img class="perfilIMG" src="{% static 'images/usersIMG/avatar-default.svg' %}" alt="">
+            {% endif %}
+            <div class="comentarioUSERDADOS">
+                <p>{{ review.author.username }}</p>
+                <p>Badge do Usuáro</p>
+                {% if review.author == user_name %}
+                <p> <a href="{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a href="{{ book.get_absolute_url }}/{{ review.pk }}/deletecomment"> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="comentarioGET">
+            <p>{{ review.review }}</p>
+        </div>
+    </div>
     {% endfor %}
-    </ul>
 </div>
 {% endblock content %}

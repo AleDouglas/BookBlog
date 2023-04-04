@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+.comentario{
+    padding: 15px;
+    display: flex;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+
+.comentarioUSERDADOS p{
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.comentarioGET{
+    padding: 15px;
+    letter-spacing: 1.3px;
+    margin-left: 15px;
+}
+
+.perfilIMG{
+    max-width: 256px;
+    height: auto;
+    box-shadow: 10px 5px 5px black;
+}

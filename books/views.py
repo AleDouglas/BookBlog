@@ -42,7 +42,7 @@ class NewBookAdd(LoginRequiredMixin, CreateView):
     model = Book
     template_name = 'books/book_add.html'
     fields = ['title', 'category','texto', 'cover']
-    success_url = reverse_lazy('book_list')
+    success_url = reverse_lazy('forum_list')
 
     def form_valid(self, form):
         user = self.request.user
