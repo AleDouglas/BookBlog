@@ -6,6 +6,7 @@ Projeto -> Fazer um fórum relacionado a livros. Basicamente o intuito do projet
 
 Versão | Atualização | Data
 :--------- | :------: | -------:
+1.1.3| Atualização front-end de todas as páginas | 04/04/2023
 1.1.2| Adicionado sistema de MarkDown aos textos, atualizado segurança na edição de comentários - antes era permitido qualquer um editar comentários de quaisquer usuário. Modificações em algns templates | 04/04/2023
 1.1.1| Adicionado CustomUser e informações como: **Biografia, Imagem para Avatar, Data de aniversário** | 03/04/2023
 1.1 | A view do fórum estava localizado no APP books, por se tratar de uma página dei preferência em mandar ele para o APP Pages, acredito que seja mais condizente com o intuito das aplicações. Essa modificação só foi possível graças a **POO** | 03/04/2023
