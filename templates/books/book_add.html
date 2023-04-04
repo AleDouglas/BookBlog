@@ -4,6 +4,14 @@
 {% block title %}Adicionar Livro{% endblock title %}
 {% block content %}
 
+<div class="alert alert-primary" role="alert" style="text-align-last: center;">
+    <p>Nós utilizamos em nossos sistemas um conversor de MarkDown em nossos textos.</p>
+	<hr>
+	<p>Recomendamos esse site: <a href="https://docs.pipz.com/central-de-ajuda/learning-center/guia-basico-de-markdown#open">Guia básico de markdown</a> .</p>
+	<hr>
+	<p>Nele vai poder ver como funciona os textos através desse sistema e usá-lo em seus tópicos ou biografia.</p>
+</div>
+
 <form method="post">
 	{% csrf_token %}
 	{{ form|crispy }}

@@ -3,13 +3,6 @@
   margin-bottom: 50px;
 }
 
-.categoria .categoria_title{
-  background-color: #00c5ff;
-  border-radius: 5px;
-  height: 50px;
-  display: flex;
-  border: 2px solid black;
-}
 .categoria_title p{
   font-size: 23px;
   font-family: 'Abel', sans-serif;

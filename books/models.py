@@ -22,10 +22,10 @@ class Book(models.Model):
     id = models.UUIDField(primary_key=True,db_index=True,default=uuid.uuid4,editable=False) 
     created = models.DateField('Data de criação', auto_now_add=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name='categoria')
-    title = models.CharField(max_length=200)
+    title = models.CharField('Título',max_length=200)
     author = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
     cover = models.ImageField('Imagem do livro',upload_to='covers/', blank=True)
-    texto = models.TextField(blank=True)
+    texto = models.TextField('Texto',blank=True)
 
     class Meta:
         indexes = [models.Index(fields=['id'], name='id_index')]

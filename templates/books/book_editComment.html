@@ -1,15 +1,15 @@
 {% extends '_base.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %}Profile Edit{% endblock title %}
+{% block title %}Comentário{% endblock title %}
 {% block content %}
 
+
 {% if user.pk == user_pk %}
-<h2>Editar Perfil de Usuário</h2>
-<form method="post" enctype='multipart/form-data'>
+<form method="post">
 	{% csrf_token %}
 	{{ form|crispy }}
-	<button class="btn btn-success" type="submit">Confirmar</button>
+	<button class="btn btn-success" type="submit">Enviar</button>
 </form>
 {% else %}
 <div class="alert alert-danger d-flex align-items-center" role="alert">
@@ -20,6 +20,4 @@
 </div>
 
 {% endif %}
-
-
 {% endblock content %}

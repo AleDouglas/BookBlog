@@ -70,9 +70,13 @@ class NewComment(LoginRequiredMixin, CreateView):
 class EditComment(LoginRequiredMixin, UpdateView):
     login_url = 'account_login'
     model = Review
-    template_name = 'books/book_comment.html'
+    template_name = 'books/book_editComment.html'
     fields = ['review']
-
+    
+    def get_context_data(self,*args, **kwargs):
+        context = super(EditComment, self).get_context_data(*args,**kwargs)
+        context['user_pk'] = self.kwargs['pk']
+        return context
     def get_success_url(self):
           book_id=self.kwargs['id_dados']
           return reverse_lazy('book_detail', kwargs={'pk': book_id})

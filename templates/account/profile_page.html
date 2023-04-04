@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+{% load blog_extras %}
+{% load static %}
+
+{% block title %}Profile Page{% endblock title %}
+
+{% block content %}
+
+<div class="profileBase">
+    <div class="profileAvatar">
+        {% if user.perfilIMG %}
+            <img class="perfilIMG" src="{{ user.perfilIMG.url }}" alt="{{ user.username }}">
+        {% else %}
+            <img class="perfilIMG" src="{% static 'images/usersIMG/avatar-default.svg' %}" alt="{{ user.username }}">
+        {% endif %}
+    </div>
+    <hr>
+    <div class="profileDados">
+        <p class="badgesTAG"><img class="badges" src="{% static 'badges/admin.svg' %} ">ADMINISTRADOR</p>
+        <hr style="height: 2px;">
+        <p>Usuário: {{ user.username }}</p>
+        <p>Nome: {{ user.first_name }} {{ user.last_name }}</p>
+        <hr>
+        <p class="bio">BIOGRAFIA:</p>
+        <p>{{ user.bio|convert_markdown|safe }}</p>
+    </div>
+
+</div>
+
+
+
+{% endblock content %}
+
