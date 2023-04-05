@@ -10,6 +10,7 @@ class Category(models.Model):
     id = models.UUIDField(primary_key=True,db_index=True,default=uuid.uuid4,editable=False)
     title = models.CharField('Título',max_length=200)
     description = models.CharField('Descrição',max_length=400, blank=True)
+    position = models.IntegerField('Posição', blank=True, default=0)
 
     class Meta:
         indexes = [models.Index(fields=['id'], name='id_category')]

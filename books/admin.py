@@ -7,7 +7,7 @@ class BookInLine(admin.TabularInline):
 
 class CategoryAdmin(admin.ModelAdmin):
     inlines = [BookInLine]
-    list_display = ("title", )
+    list_display = ("title", 'position',)
 
 admin.site.register(Category, CategoryAdmin)
 

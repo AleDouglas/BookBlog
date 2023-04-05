@@ -26,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY = 'django-insecure-^3cuzn8zb-)#31+v@d1n916k)&o%*wvfiefqk$ef1fr2r&w74f'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+#SECRET_KEY = 'django-insecure-^3cuzn8zb-)#31+v@d1n916k)&o%*wvfiefqk$ef1fr2r&w74f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = int(os.environ.get('DEBUG', default=0))
-DEBUG = 1
+DEBUG = int(os.environ.get('DEBUG', default=0))
+#DEBUG = 1
 
 ALLOWED_HOSTS = []
 
@@ -53,8 +53,6 @@ INSTALLED_APPS = [
     'allauth', 
     'allauth.account',
     'debug_toolbar', 
-    #'channels', # new
-    #'django_live_templates', # new
     
 
     # local
@@ -128,14 +126,14 @@ WSGI_APPLICATION = 'bkstore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+}'''
 
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
@@ -144,7 +142,7 @@ DATABASES = {
         'HOST': 'db',
         'PORT': 5432
     }
-}'''
+}
 
 
 # Password validation

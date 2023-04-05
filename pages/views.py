@@ -24,7 +24,7 @@ class ForumView(ListView):
 
     def get_context_data(self,*args, **kwargs):
         context = super(ForumView, self).get_context_data(*args,**kwargs)
-        context['category'] = Category.objects.order_by('title')
+        context['category'] = Category.objects.order_by('position')
         return context
 
 
