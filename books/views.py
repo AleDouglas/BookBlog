@@ -5,24 +5,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.db.models import Q
 from django.urls import reverse_lazy
 
-# Objetivo: listar todos os livros presentes no Banco de Dados
+# Objetivo: listar todos os tópicos presentes no Banco de Dados
 class BookListView(ListView): 
     model = Book
     context_object_name = 'book_list'
     template_name = 'books/book_list.html'
 
-
-# Objetivo: retirar informações sobre algum livro específico selecionado pelo usuário
-class BookDetailView(LoginRequiredMixin, DetailView): 
-    model = Book
-    context_object_name = 'book'
-    template_name = 'books/book_detail.html'
-    login_url = 'account_login'
-
-    def get_context_data(self,*args, **kwargs):
-        context = super(BookDetailView, self).get_context_data(*args,**kwargs)
-        context['user_name'] = self.request.user
-        return context
 
 # Objetivo: realizar pesquisas e exibir resultados
 class SearchResultsListView(ListView): 
@@ -78,8 +66,8 @@ class EditComment(LoginRequiredMixin, UpdateView):
         context['user_pk'] = self.kwargs['pk']
         return context
     def get_success_url(self):
-          book_id=self.kwargs['id_dados']
-          return reverse_lazy('book_detail', kwargs={'pk': book_id})
+        book_id=self.kwargs['id_dados']
+        return reverse_lazy('book_detail', kwargs={'pk': book_id})
 
 # Objetivo: permitir que o usuário delete comentários específicos
 class DeleteComment(LoginRequiredMixin, DeleteView):

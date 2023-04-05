@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.views.generic import UpdateView, ListView
+from django.views.generic import UpdateView, ListView, DetailView
 from .models import CustomUser
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -24,9 +24,10 @@ class EditProfile(LoginRequiredMixin, UpdateView):
           return reverse_lazy('profile', kwargs={'pk': id_user})
 
 # Objetivo: Exibir o Profile do Usuário
-class ViewProfile(LoginRequiredMixin, ListView):
+class ViewProfile(LoginRequiredMixin, DetailView):
     login_url = 'account_login'
     model = CustomUser
+    context_object_name = 'user_dados'
     template_name = 'account/profile_page.html'
 
     def get_context_data(self,*args, **kwargs):

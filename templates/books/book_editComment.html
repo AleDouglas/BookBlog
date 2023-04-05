@@ -4,8 +4,7 @@
 {% block title %}Comentário{% endblock title %}
 {% block content %}
 
-
-{% if user.pk == user_pk %}
+{% if review.author.pk == user.pk %}
 <form method="post">
 	{% csrf_token %}
 	{{ form|crispy }}

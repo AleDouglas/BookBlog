@@ -27,3 +27,17 @@
     font-size: 1.1em;
     letter-spacing: 1.5px;
 }
+.authorTopico{
+    display: flex;
+    align-items: center;
+}
+
+.authorTopico p{
+    margin-left: 25px;
+}
+
+.perfilIMGAUTHOR{
+    max-width: 128px;
+    height: auto;
+    box-shadow: 10px 5px 5px black;
+}

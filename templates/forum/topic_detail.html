@@ -1,31 +1,60 @@
 {% extends '_base.html' %}
+{% load blog_extras %}
 {% load static %}
 
 {% block title %}{{ book.title }}{% endblock title %}
 {% block content %}
 <!-- TÓPICO -->
-<div class="topico_principal">
-    <div class="topico_topo">
+<div class="topicoPrincipal">
+    <div class="topicoTopo">
         <h1>{{ book.title }}</h1>
-        <p>Autor do tópico: {{ book.author }}</p>
+        <div class="authorTopico">
+            {% if book.author.perfilIMG %}
+                <img class="perfilIMGAUTHOR" src="{{ book.author.perfilIMG.url }}" alt="">
+            {% else %}
+                
+                <img class="perfilIMGAUTHOR" src="{% static 'images/usersIMG/avatar-default.svg' %}" alt="">
+            {% endif %}
+            <div>
+                <p>Autor do tópico: {{ book.author.username }}</p>
+                {% if book.author.badgeIMG %}
+                <p> <img class="mini-icon" src="{{ book.author.badgeIMG.url }}" alt=""> {{ book.author.badgeTITLE|convert_markdown|safe }}</p>
+                {% endif %}
+            </div>
+        </div>
         <hr>
     </div>
-    <div class="topico_conteudo">
-        <p>{{ book.texto }}</p>
+    <div class="topicoConteudo">
+        <p>{{ book.texto|convert_markdown|safe }}</p>
     </div>
     <hr>
 </div>
 <!-- COMENTÁRIOS -->
 <div>
-    <h3>Comentários</h3>
+    <h3 style="margin-top: 20px;">Comentários</h3>
     <a href="{{ book.get_absolute_url }}/addcomment/">Adicionar comentário...</a>
-    <ul>
     {% for review in book.reviews.all %}
-        <li>{{ review.review }} ({{ review.author }})</li>
-        {% if review.author == user_name %}
-        <p> <a href="{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a href="{{ book.get_absolute_url }}/{{ review.pk }}/deletecomment"> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
-        {% endif %}
+    <div class="comentario">
+        <div class="comentarioUSER">
+            {% if review.author.perfilIMG %}
+            <img class="perfilIMG" src="{{ review.author.perfilIMG.url }}" alt="">
+            {% else %}
+            <img class="perfilIMG" src="{% static 'images/usersIMG/avatar-default.svg' %}" alt="">
+            {% endif %}
+            <div class="comentarioUSERDADOS">
+                <p>{{ review.author.username }}</p>
+                {% if review.author.badgeIMG %}
+                <p> <img class="mini-icon" src="{{ review.author.badgeIMG.url }}" alt=""> {{ review.author.badgeTITLE }}</p>
+                {% endif %}
+                {% if review.author == user_name %}
+                <p> <a href="books{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a href="{{ book.get_absolute_url }}/{{ review.pk }}/deletecomment"> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="comentarioGET">
+            <p>{{ review.review }}</p>
+        </div>
+    </div>
     {% endfor %}
-    </ul>
 </div>
 {% endblock content %}

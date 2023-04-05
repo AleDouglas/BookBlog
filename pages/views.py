@@ -27,15 +27,14 @@ class ForumView(ListView):
         context['category'] = Category.objects.order_by('position')
         return context
 
-
 # Objetivo: retirar informações sobre algum tópico específico selecionado pelo usuário
 class ForumDetailView(LoginRequiredMixin, DetailView): 
     model = Book
     context_object_name = 'book'
-    template_name = 'forum/forum_detail.html'
+    template_name = 'forum/topic_detail.html'
     login_url = 'account_login'
 
     def get_context_data(self,*args, **kwargs):
-        context = super(BookDetailView, self).get_context_data(*args,**kwargs)
+        context = super(ForumDetailView, self).get_context_data(*args,**kwargs)
         context['user_name'] = self.request.user
         return context

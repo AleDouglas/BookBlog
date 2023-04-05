@@ -12,22 +12,24 @@
     <div class="perfil">
 
         <div class="perfilIMG">
-            {% if user.perfilIMG %}
-            <img class="perfilIMG" src="{{ user.perfilIMG.url }}" alt="{{ user.username }}">
+            {% if user_dados.perfilIMG %}
+            <img class="perfilIMG" src="{{ user_dados.perfilIMG.url }}" alt="{{ user_dados.username }}">
             {% else %}
-            <img class="perfilIMG" src="{% static 'images/usersIMG/avatar-default.svg' %}" alt="{{ user.username }}">
+            <img class="perfilIMG" src="{% static 'images/usersIMG/avatar-default.svg' %}" alt="{{ user_dados.username }}">
             {% endif %}
         </div>
         <div class="perfilDADOS">
+            {% if user_dados.pk == user.pk %}
             <p> <a href="{% url 'profile_edit' user.pk %}"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar perfil</a>
-            <p>Usuário: {{ user.username }}</p>
-            {% if user.is_staff %}
+            {% endif %}
+            <p>Usuário: {{ user_dados.username }}</p>
+            {% if user_dados.is_staff %}
             <p class="badgesTAG"><img class="badges" src="{% static 'badges/admin.svg' %} ">ADMINISTRADOR</p>
             {% endif %}
-            <p>Conta criada em: {{ user.date_joined }}</p>
-            <p>Data de nascimento: {{ user.birth_date }}</p>
+            <p>Conta criada em: {{ user_dados.date_joined }}</p>
+            <p>Data de nascimento: {{ user_dados.birth_date }}</p>
             <h3>BIOGRAFIA:</h3>
-            <p>{{ user.bio|convert_markdown|safe }}</p>
+            <p>{{ user_dados.bio|convert_markdown|safe }}</p>
         </div>
 
 
