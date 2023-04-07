@@ -41,3 +41,7 @@
     height: auto;
     box-shadow: 10px 5px 5px black;
 }
+
+.badgeBorder{
+    border: 2px solid black;
+}

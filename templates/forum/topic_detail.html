@@ -17,9 +17,7 @@
             {% endif %}
             <div>
                 <p>Autor do tópico: {{ book.author.username }}</p>
-                {% if book.author.badgeIMG %}
-                <p> <img class="mini-icon" src="{{ book.author.badgeIMG.url }}" alt=""> {{ book.author.badgeTITLE|convert_markdown|safe }}</p>
-                {% endif %}
+                <p><img class="mini-icon" src="{{ book.author.badge.badgeIMG.url }}" alt=""> {{ book.author.badge.title }}</p>
             </div>
         </div>
         <hr>
@@ -43,9 +41,7 @@
             {% endif %}
             <div class="comentarioUSERDADOS">
                 <p>{{ review.author.username }}</p>
-                {% if review.author.badgeIMG %}
-                <p> <img class="mini-icon" src="{{ review.author.badgeIMG.url }}" alt=""> {{ review.author.badgeTITLE }}</p>
-                {% endif %}
+                <p class="badgeBorder"> <img class="mini-icon" src="{{ review.author.badge.badgeIMG.url }}" alt=""> {{ review.author.badge.title }}</p>
                 {% if review.author == user_name %}
                 <p> <a href="books{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a href="{{ book.get_absolute_url }}/{{ review.pk }}/deletecomment"> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
                 {% endif %}

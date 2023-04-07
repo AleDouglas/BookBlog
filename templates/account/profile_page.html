@@ -23,10 +23,7 @@
             <p> <a href="{% url 'profile_edit' user.pk %}"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar perfil</a>
             {% endif %}
             <p>Usuário: {{ user_dados.username }}</p>
-            {% if user_dados.is_staff %}
-            <p class="badgesTAG"><img class="badges" src="{% static 'badges/admin.svg' %} ">ADMINISTRADOR</p>
-            {% endif %}
-            <p>Conta criada em: {{ user_dados.date_joined }}</p>
+            <p class="badgesTAG"><img class="badges" src="{{ user_dados.badge.badgeIMG.url }}" alt=""> {{ user_dados.badge.title }}</p>
             <p>Data de nascimento: {{ user_dados.birth_date }}</p>
             <h3>BIOGRAFIA:</h3>
             <p>{{ user_dados.bio|convert_markdown|safe }}</p>
