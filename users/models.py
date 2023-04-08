@@ -13,4 +13,4 @@ class CustomUser(AbstractUser):
     bio = models.TextField('Biografia',max_length=500, blank=True)
     birth_date = models.DateField('Data de aniversário',null=True, blank=True)
     perfilIMG = models.ImageField('Imagem do perfil',upload_to='perfil/', blank=True)
-    badge = models.ForeignKey(BadgeUser,on_delete=models.CASCADE, related_name='badge', default=1)
+    badge = models.ForeignKey(BadgeUser,on_delete=models.CASCADE, related_name='badge', blank=True, null=True, default=1)

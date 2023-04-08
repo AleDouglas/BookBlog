@@ -9,10 +9,17 @@ Projeto -> Fazer um fórum relacionado a livros. Basicamente o intuito do projet
 - Páginação nos comentários e categorias
 - Implementação do sistema de badges
 
+### Existe uma pequena DATABASE pronta para rodar o servidor de imediato
+Retirei do postgreSQL e do Docker para ficar mais fácil de testar caso clone o GitHub,
+basta apenas instalar os pacotes necessários ( requeriments.txt ou pipfile ) e simplesmente rodar o Django: python manage.py runserver
+
+
 ### Update
 
 Versão | Atualização | Data
 :--------- | :------: | -------:
+1.1.5.1 | Vai ser criado uma tabela já pronta para rodar através do SQLite3 para testes iniciais | 08/08/2023
+1.1.5 | Atualizado CustomUser , antes ocorria de não criar usuários sem existisse uma Badge antes, agora aceita o valor Null para Badge | 08/04/2023
 1.1.4 | Atualização na forma como as categorias do fórum eram organizadas , foi adicionado um método do Administrador controlar em que posição fica cada categoria | 05/04/2023
 1.1.3| Atualização front-end de todas as páginas | 04/04/2023
 1.1.2| Adicionado sistema de MarkDown aos textos, atualizado segurança na edição de comentários - antes era permitido qualquer um editar comentários de quaisquer usuário. Modificações em algns templates | 04/04/2023

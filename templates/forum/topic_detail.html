@@ -30,7 +30,7 @@
 <!-- COMENTÁRIOS -->
 <div>
     <h3 style="margin-top: 20px;">Comentários</h3>
-    <a href="{{ book.get_absolute_url }}/addcomment/">Adicionar comentário...</a>
+    <a href="books{{ book.get_absolute_url }}/addcomment/">Adicionar comentário...</a>
     {% for review in book.reviews.all %}
     <div class="comentario">
         <div class="comentarioUSER">
@@ -43,12 +43,12 @@
                 <p>{{ review.author.username }}</p>
                 <p class="badgeBorder"> <img class="mini-icon" src="{{ review.author.badge.badgeIMG.url }}" alt=""> {{ review.author.badge.title }}</p>
                 {% if review.author == user_name %}
-                <p> <a href="books{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a href="{{ book.get_absolute_url }}/{{ review.pk }}/deletecomment"> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
+                <p> <a href="books{{ book.get_absolute_url }}/{{ review.pk }}/editcomment"><img class="mini-icon" src="{% static 'images/icons/edit.svg' %}"> Editar</a> ||<a href="books{{ book.get_absolute_url }}/{{ review.pk }}/deletecomment"> <img class="mini-icon" src="{% static 'images/icons/delete.svg' %}"> Deletar</p></a>
                 {% endif %}
             </div>
         </div>
         <div class="comentarioGET">
-            <p>{{ review.review }}</p>
+            <p>{{ review.review|convert_markdown|safe }}</p>
         </div>
     </div>
     {% endfor %}
